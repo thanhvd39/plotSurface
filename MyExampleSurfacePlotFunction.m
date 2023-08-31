@@ -24,7 +24,7 @@ linewidth = 1;
 % if nargin < 6 
 %     climits = [nanmin(data) nanmax(data)];
 % end
-climits = [nanmin(final_cdata) nanmax(final_cdata)];
+% climits = [nanmin(final_cdata) nanmax(final_cdata)];
 % figure('Position',[461   462   560   325])
 figure('Position',[107.5,310.5,1237,392.5])
 % 1,1,1129.5,335.5
@@ -47,6 +47,7 @@ plotSurfaceROIBoundary(surface_all.lh,id_all.lh,data_all.lh ,'faces',cmap,linewi
 camlight(80,-10);
 camlight(-80,-10);
 view([90 0])
+
 % 
 set(gca,'CameraViewAngle', scale)
 axis off
@@ -54,7 +55,7 @@ axis image
 
 
 
-ax_sub3 = axes('Position',[delta_left+ -0.077,delta_bottom+ 0.2566,1,1]);
+ax_sub3 = axes('Position',[delta_left+-0.077,delta_bottom+-0.178,1,1]);
 plotSurfaceROIBoundary(surface_all.rh,id_all.rh,data_all.rh ,'faces',cmap,linewidth);
 camlight(80,-10);
 camlight(-80,-10);
@@ -66,7 +67,7 @@ axis image
 
 
 
-ax_sub4 = axes('Position',[delta_left+-0.077,delta_bottom+-0.178,1,1]);
+ax_sub4 = axes('Position',[delta_left+ -0.077,delta_bottom+ 0.2566,1,1] );
 plotSurfaceROIBoundary(surface_all.rh,id_all.rh,data_all.rh ,'faces',cmap,linewidth);
 camlight(80,-10);
 camlight(-80,-10);
@@ -92,7 +93,7 @@ colormap(cmap)
 caxis(climits)
 c = colorbar('Location','southoutside');
 % c = colorbar;
-set(c, 'xlim', [nanmin(final_cdata) nanmax(final_cdata)],'Position',[delta_left+0.17,0.07+delta_bottom,0.223,0.0367],'FontSize',10);
+% set(c, 'xlim', [nanmin(final_cdata) nanmax(final_cdata)],'Position',[delta_left+0.17,0.07+delta_bottom,0.223,0.0367],'FontSize',10);
 set(c, 'Position',[delta_left+0.17,0.07+delta_bottom,0.223,0.0367],'FontSize',10);
 if exist('data_label','var')
     c.Label.String = data_label;
