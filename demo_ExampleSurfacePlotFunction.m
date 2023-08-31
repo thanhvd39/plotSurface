@@ -45,9 +45,9 @@ surface.faces = lh_faces;
 vertex_id = lh_rand500;
 
 data = lh_Yeo_7net;
-data(data==0) = NaN;
+% data(data==0) = NaN;
 
-cmap = Yeo_7net_cmap;
+cmap = jet(250);
 
 data_label = 'Yeo network';
 
