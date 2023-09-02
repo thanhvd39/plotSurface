@@ -1,11 +1,12 @@
+
 clc,
-close all;
+% close all;
 clear;
 
 
 load('mySurface_data.mat')
-% load('D:\Thanh\Research\ADNI\figure\figure 5\PQ_classification.mat')
-load('D:\Thanh\Research\rePLS-figure\figure5\PQ_classification_3.mat')
+load('D:\Thanh\Research\ADNI\figure\figure 5\PQ_classification.mat')
+% load('D:\Thanh\Research\rePLS-figure\figure5\PQ_classification_3.mat')
 
 for i=1:3
 difference_PQ = zeros(size(PQ));
