@@ -55,5 +55,5 @@ elseif i ==2
 elseif i==3 
     saveas(gcf,sprintf("PQ_AD_HC.png", i))
 end
-break
+% break
 end

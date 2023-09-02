@@ -25,7 +25,7 @@ linewidth = 1;
 %     climits = [nanmin(data) nanmax(data)];
 % end
 % climits = [nanmin(final_cdata) nanmax(final_cdata)];
-figure('Position',[107.5,144.5,889,558.5])
+figure('Position',[107.5,144.5,889,558.5],'Color',[1 1 1])
 delta_left = -0.07;
 delta_bottom = -0.02;
 
@@ -73,7 +73,7 @@ axis image
 
 
 
-ax_sub3 = axes('Position',[delta_left+ rh_left,delta_bottom+lh_up,1,1]);
+ax_sub3 = axes('Position',[delta_left+rh_left  ,delta_bottom + rh_down,1,1]);
 plotSurfaceROIBoundary(surface_all.rh,id_all.rh,data_all.rh ,'faces',cmap,linewidth);
 camlight(80,-10);
 camlight(-80,-10);
@@ -85,7 +85,7 @@ axis image
 
 
 
-ax_sub4 = axes('Position',[delta_left+rh_left  ,delta_bottom + rh_down,1,1] );
+ax_sub4 = axes('Position',[delta_left+ rh_left,delta_bottom+lh_up,1,1] );
 plotSurfaceROIBoundary(surface_all.rh,id_all.rh,data_all.rh ,'faces',cmap,linewidth);
 camlight(80,-10);
 camlight(-80,-10);
