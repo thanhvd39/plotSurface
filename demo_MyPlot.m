@@ -5,7 +5,8 @@ clear;
 
 
 load('mySurface_data.mat')
-load('D:\Thanh\Research\ADNI\figure\figure 5\PQ_classification.mat')
+PQ = rand(202,1)';
+% load('D:\Thanh\Research\ADNI\figure\figure 5\PQ_classification.mat')
 % load('D:\Thanh\Research\rePLS-figure\figure5\PQ_classification_3.mat')
 
 for i=1:3
