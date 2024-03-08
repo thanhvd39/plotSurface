@@ -6,11 +6,11 @@ function cmap = mycolormap(middleValue,range_thresh,cmin,cmax)
 n = 256;                %// resolution
 % c = colorbar;
 middle_index = dsearchn(linspace(cmin,cmax,n)',middleValue);
-cmap(4,:) = [220,0,0]/255; %red
+cmap(1,:) = [220,0,0]/255; %red
 % cmap(1,:) = [245,245,245]/255; %gray
 cmap(2,:) = [245,245,245]/255;   %gray
 cmap(3,:) = [247,247,247]/255;   %gray
-cmap(1,:) = [60,84,136]/255; % blue
+cmap(4,:) = [60,84,136]/255; % blue
 
 % 
 % % % cmap(1,:) = [220,0,0]/255; %red
