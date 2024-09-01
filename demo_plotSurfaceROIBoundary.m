@@ -4,9 +4,10 @@
 load('surface_data.mat','lh_inflated_verts','lh_verts','lh_faces','lh_HCPMMP1','lh_aparc','lh_rand200')
 load('example_data.mat','lh_sulc')
 
-surface.vertices = lh_inflated_verts;
-surface.faces = lh_faces;
-
+surface.vertices = rh_inflated_verts;
+surface.faces = rh_faces;
+surface = gifti(surface)
+save(surface,'rh.surf.gii','Base64Binary');
 figure('Position',[0 0 1920 963])
 
 ax1 = axes('Position',[0.01 0 .3 1]);
@@ -82,60 +83,60 @@ linewidth = 4;
  lh_rand200_color(isnan(lh_rand200_),:) = .5;
 
  FaceVertexCData = makeFaceVertexCData(surface.vertices,surface.faces,lh_rand200,lh_rand200,lh_rand200_color_map);
- 
-for i = 1:10
-
-figure('Position',[0 0  1680 933])
-    
-    % The data here is just each ROIs own ID number
-
-        if i < 6
-            data = 1:100;
-            cmap = lines(34);
-            savename = ['ROIS_',boundary_type{i},'_flat.png'];
-        else
-            data = lh_sulc;
-            cmap = parula(100);
-            if i == 6
-            savename = ['sulc_',boundary_type{i},'_flat.png'];
-            else
-            savename = ['sulc_',boundary_type{i},'_interp.png'];    
-            end
-        end
-    
-    p = plotSurfaceROIBoundary(surface,lh_rand200,data,boundary_type{i},cmap,linewidth);
-
-    camlight(80,-10);
-    camlight(-80,-10);
-
-    view([-90 0])
-
-    axis off
-    axis tight
-    axis equal
-    %axis vis3d
-    
-    % Mapping on the ROI id of each vertex to help with understanding how
-    % this all works
-    hold on
-        
-    s = scatter3(lh_inflated_verts(:,1)*1.01,lh_inflated_verts(:,2),lh_inflated_verts(:,3),40,lh_rand200_color,'filled');
-    s.Clipping = 'off';
-    s.MarkerEdgeColor = 'k';
-    s.LineWidth = 1;
-    
-    % This just zooms into the area of interest    
-    ylim([-25.2699   -8.7600])
-    zlim([20.2174   31.3705])
-
-    p.EdgeColor = 'k';
-    p.EdgeAlpha = .5;
-    
-    % If you wanted to make a colorbar, this is what you would have to do:
-    % colormap(cmap)
-    % caxis([min(data) max(data)])
-    % c = colorbar
-    
-    %print(['./figures/',savename],'-dpng')
-
-end
+%  
+% for i = 1:10
+% 
+% figure('Position',[0 0  1680 933])
+%     
+%     % The data here is just each ROIs own ID number
+% 
+%         if i < 6
+%             data = 1:100;
+%             cmap = lines(34);
+%             savename = ['ROIS_',boundary_type{i},'_flat.png'];
+%         else
+%             data = lh_sulc;
+%             cmap = parula(100);
+%             if i == 6
+%             savename = ['sulc_',boundary_type{i},'_flat.png'];
+%             else
+%             savename = ['sulc_',boundary_type{i},'_interp.png'];    
+%             end
+%         end
+%     
+%     p = plotSurfaceROIBoundary(surface,lh_rand200,data,boundary_type{i},cmap,linewidth);
+% 
+%     camlight(80,-10);
+%     camlight(-80,-10);
+% 
+%     view([-90 0])
+% 
+%     axis off
+%     axis tight
+%     axis equal
+%     %axis vis3d
+%     
+%     % Mapping on the ROI id of each vertex to help with understanding how
+%     % this all works
+%     hold on
+%         
+%     s = scatter3(lh_inflated_verts(:,1)*1.01,lh_inflated_verts(:,2),lh_inflated_verts(:,3),40,lh_rand200_color,'filled');
+%     s.Clipping = 'off';
+%     s.MarkerEdgeColor = 'k';
+%     s.LineWidth = 1;
+%     
+%     % This just zooms into the area of interest    
+%     ylim([-25.2699   -8.7600])
+%     zlim([20.2174   31.3705])
+% 
+%     p.EdgeColor = 'k';
+%     p.EdgeAlpha = .5;
+%     
+%     % If you wanted to make a colorbar, this is what you would have to do:
+%     % colormap(cmap)
+%     % caxis([min(data) max(data)])
+%     % c = colorbar
+%     
+%     %print(['./figures/',savename],'-dpng')
+% 
+% end

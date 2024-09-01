@@ -102,7 +102,7 @@ camlight(80,-10);
 camlight(-80,-10);
 % view([0 0])
 % 
-set(gca,'CameraViewAngle', scale)
+% set(gca,'CameraViewAngle', scale)
 axis off
 axis image
 
@@ -120,7 +120,7 @@ elseif strcmp(location,'default')
 %     set(c, 'Position',[delta_left+0.9771 0.3638+delta_bottom 0.020059992500933 0.291629340901834]);
     set(c, 'Position',[0.914411586051746 0.389458012533572 0.020059992500933 0.291629340901834]);
 
-    
+set(gca,'CameraViewAngle', scale-2.5)   
 end
 if exist('data_label','var')
     c.Label.String = data_label;

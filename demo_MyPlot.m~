@@ -1,0 +1,30 @@
+
+clc,
+close all;
+clear;
+ load('mySurface_data.mat')
+ 
+corticalThicknesses = rand(202,1);
+corticalThicknesses = reshape(corticalThicknesses,[202,1]);
+corticalThicknesses(1) = NaN;
+corticalThicknesses(2) = NaN;
+
+surface = surface_all.both;
+vertex_id = surface_all.id_all.both;
+data = corticalThicknesses;
+cmap = jet(64);
+plotSurfaceROIBoundary(surface,vertex_id,data,boundary_method,cmap,linewidth,climits)
+
+% [left_cdata, lh_vertex_id, right_cdata, rh_vertex_id,final_cdata,vertex_id]  = convertCorticalThickness2VertexData(corticalThicknesses);
+% data_label = "";
+% middleValue = 0;
+% range_thresh = 0.1;
+% cmap = mycolormap(middleValue,range_thresh,cmin,cmax);
+% 
+% 
+% data_all.both = final_cdata;
+% data_all.lh = left_cdata;
+% data_all.rh = right_cdata;
+% climits = [cmin, cmax];
+% MyExampleSurfacePlotFunction(surface_all,id_all,data_all,cmap,data_label,climits);
+% 
