@@ -24,4 +24,4 @@
 
 
 ## Acknowledgements
-Thanks to project [plotSurfaceROIBoundary](https://github.com/StuartJO/plotSurfaceROIBoundary)**
+Thanks to project [plotSurfaceROIBoundary](https://github.com/StuartJO/plotSurfaceROIBoundary)
