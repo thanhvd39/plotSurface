@@ -1,0 +1,6 @@
+/GIF
+*.mat
+*.fig
+*.eps
+*.svg
+.DS_Store
