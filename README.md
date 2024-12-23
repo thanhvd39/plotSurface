@@ -1,4 +1,3 @@
-**# Plot brain surface
 # Plot Brain Surface
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
