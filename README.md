@@ -21,7 +21,7 @@
    - Supported formats: `.mat` file or `.csv` file.
    - Ensure the file contains a 200-element vector of weights corresponding to the regions in the Schaefer atlas.
 
-2. Run script main.m
+2. Run script main.m[README.md](README.md)
 
 
 ## Acknowledgements

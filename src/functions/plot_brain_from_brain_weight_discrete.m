@@ -43,7 +43,7 @@ function plot_brain_from_brain_weight_discrete(varargin)
         data_label = "";
         middleValue = (cmin+ cmax)/2;
         % middleValue = 0;
-        range_thresh = 0.15;
+        range_thresh = 0.05;
         cmap = createCustomColormap();
         
         data_all.both = final_cdata;
@@ -53,7 +53,7 @@ function plot_brain_from_brain_weight_discrete(varargin)
         MyExampleSurfacePlotFunction(surface_all,id_all,data_all,cmap,data_label,climits);
         
         colorbar('hide') 
-        saveas(gcf,sprintf("%s/%s_%i_2.svg",args.dir,args.name,i-1))    
+        saveas(gcf,sprintf("%s/%s_%i.svg",args.dir,args.name,i-1))    
 
     end
 MyExampleSurfacePlotFunction(surface_all,id_all,data_all,cmap,data_label,climits);
