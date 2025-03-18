@@ -40,7 +40,7 @@ rh_down = lh_down;
 midle_left = 0.03;
 midle_bottom = 0.045;
 ax_sub1 = axes('Position',[delta_left+lh_left ,delta_bottom + lh_up,1,1]); %2446
-plotSurfaceROIBoundary(surface_all.lh,id_all.lh,data_all.lh ,'faces',cmap,linewidth);
+plotSurfaceROIBoundary(surface_all.lh,id_all.lh,data_all.lh ,'faces',cmap,linewidth,climits);
 % patch('FaceLighting','gouraud','Clipping','off',...
 %     'Vertices',surface_all.lh.vertices,...
 %     'SpecularStrength',0,...
@@ -53,19 +53,19 @@ plotSurfaceROIBoundary(surface_all.lh,id_all.lh,data_all.lh ,'faces',cmap,linewi
 camlight(80,-10);
 camlight(-80,-10);
 view([-90 0])
-
+caxis(gca,climits)
 set(gca,'CameraViewAngle', scale)
 axis off
 axis image
 
 
 ax_sub2 = axes('Position',[delta_left+lh_left,delta_bottom + lh_down,1,1]);
-plotSurfaceROIBoundary(surface_all.lh,id_all.lh,data_all.lh ,'faces',cmap,linewidth);
+plotSurfaceROIBoundary(surface_all.lh,id_all.lh,data_all.lh ,'faces',cmap,linewidth,climits);
 % plotSurfaceROIBoundary(g_lh,lh_vertex_id,left_cdata,'faces',cmap,1,climits);
 camlight(80,-10);
 camlight(-80,-10);
 view([90 0])
-
+caxis(gca,climits)
 % 
 set(gca,'CameraViewAngle', scale)
 axis off
@@ -74,11 +74,11 @@ axis image
 
 
 ax_sub3 = axes('Position',[delta_left+rh_left  ,delta_bottom + rh_down,1,1]);
-plotSurfaceROIBoundary(surface_all.rh,id_all.rh,data_all.rh ,'faces',cmap,linewidth);
+plotSurfaceROIBoundary(surface_all.rh,id_all.rh,data_all.rh ,'faces',cmap,linewidth,climits);
 camlight(80,-10);
 camlight(-80,-10);
 view([-90 0])
-
+caxis(gca,climits)
 set(gca,'CameraViewAngle', scale)
 axis off
 axis image
@@ -86,10 +86,11 @@ axis image
 
 
 ax_sub4 = axes('Position',[delta_left+ rh_left,delta_bottom+lh_up,1,1] );
-plotSurfaceROIBoundary(surface_all.rh,id_all.rh,data_all.rh ,'faces',cmap,linewidth);
+plotSurfaceROIBoundary(surface_all.rh,id_all.rh,data_all.rh ,'faces',cmap,linewidth,climits);
 camlight(80,-10);
 camlight(-80,-10);
 view([90 0])
+caxis(gca,climits)
 % 
 set(gca,'CameraViewAngle', scale)
 axis off
@@ -97,7 +98,7 @@ axis image
 
 
 ax_sub5 = axes('Position',[delta_left+midle_left ,delta_bottom+ midle_bottom,1,1]);
-plotSurfaceROIBoundary(surface_all.both,id_all.both,data_all.both ,'faces',cmap,linewidth);
+plotSurfaceROIBoundary(surface_all.both,id_all.both,data_all.both ,'faces',cmap,linewidth,climits);
 camlight(80,-10);
 camlight(-80,-10);
 % view([0 0])
@@ -108,7 +109,7 @@ axis image
 
 
 colormap(cmap)
-caxis(climits)
+caxis(gca,climits)
 
 % location = 'southoutside';
 location = 'default';

@@ -5,10 +5,11 @@ function cmap = mycolormap_blue(cmin,cmax)
 
 n = 256;                %// resolution
 % c = colorbar;
-range_thresh = 0.2;
-middleValue = cmin + (-cmin+cmax)*0.21;
-% range_thresh = 0.05;
-% middleValue = cmin + (-cmin+cmax)*0.85;
+% range_thresh = 0.2;
+% middleValue = cmin + (-cmin+cmax)*0.21;
+range_thresh = 0.01;
+middleValue = cmin + (-cmin+cmax)*0.7;
+% middleValue = 0.0
 middle_index = dsearchn(linspace(cmin,cmax,n)',middleValue);
 % cmap(4,:) = [220,0,0]/255; %red
 % % cmap(1,:) = [245,245,245]/255; %gray
@@ -19,8 +20,8 @@ middle_index = dsearchn(linspace(cmin,cmax,n)',middleValue);
 
 % red to blue
 cmap(1,:) = [255,255,255]/255; %red
-% cmap(1,:) = [245,245,245]/255; %gray
-cmap(3,:) = [245,245,245]/255;   %gray
+% % cmap(1,:) = [245,245,245]/255; %gray
+cmap(3,:) = [230,230,230]/255;   %gray
 cmap(2,:) = [247,247,247]/255;   %gray
 cmap(4,:) = [60,84,136]/255; % blue
 

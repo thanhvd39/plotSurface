@@ -7,3 +7,5 @@
 *.asv
 src/*.png
 src/svg
+
+.idea

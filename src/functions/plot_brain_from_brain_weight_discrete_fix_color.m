@@ -1,4 +1,4 @@
-function plot_brain_from_brain_weight_discrete(varargin)
+function plot_brain_from_brain_weight_discrete_fix_color(varargin)
     % Create an inputParser object
     parser = inputParser;
     % Define expected arguments
@@ -44,7 +44,7 @@ function plot_brain_from_brain_weight_discrete(varargin)
         middleValue = (cmin+ cmax)/2;
         % middleValue = 0;
         range_thresh = 0.05;
-        cmap = createCustomColormap();
+        cmap = jet(64);
         
         data_all.both = final_cdata;
         data_all.lh = left_cdata;

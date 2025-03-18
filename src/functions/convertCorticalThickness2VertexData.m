@@ -6,7 +6,8 @@ function [w_left_cdata, lh_vertex_id, w_right_cdata, rh_vertex_id,final_cdata,ve
 lh_atlas_id = a.table(:,5);
 lh_vertex_id  = gg_lh_cdata;
 
-[~,gg_rh_cdata,a] = read_annotation(path_annot_rh);
+% % [~,gg_rh_cdata,a] = read_annotation(path_annot_rh);
+[~,gg_rh_cdata,a] = read_annotation(path_annot_lh);
 rh_atlas_id = a.table(:,5);
 rh_vertex_id  = gg_rh_cdata;
 

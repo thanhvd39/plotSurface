@@ -3,8 +3,11 @@ function plot_brain_from_brain_weight(varargin)
     parser = inputParser;
     % Define expected arguments
     addParameter(parser, 'weight', @isnumeric);
-    addParameter(parser, 'name',"test", @isstr);
-    addParameter(parser, 'dir',"./", @isstr);
+    addParameter(parser, 'name', @isstr);
+    addParameter(parser, 'dir',  @isstr);
+    addParameter(parser, 'colormap', @ischar); % Add colormap parameter
+    addParameter(parser, 'max', inf, @isnumeric);
+    addParameter(parser, 'min',-inf,@isnumeric);
     
     run('init.m')
     path_annot_lh = 'lh.Schaefer2018_200Parcels_7Networks_order.annot';
@@ -16,47 +19,66 @@ function plot_brain_from_brain_weight(varargin)
     args = parser.Results;
 
     data = args.weight;
+    colormap_name = args.colormap; % Get colormap name
+
 
     cortical_thickness_weight = data;
     
-    [regions,maps] = size(cortical_thickness_weight);
+    [regions, maps] = size(cortical_thickness_weight);
     if regions < maps
-        [regions,maps] = deal(maps,regions);
+        [regions, maps] = deal(maps, regions);
         cortical_thickness_weight = cortical_thickness_weight';
     end
 
-    mask = find(cortical_thickness_weight==-999);
+    mask = find(cortical_thickness_weight == -999);
     cortical_thickness_weight(mask) = -0.5;
 
-    for i=1:maps
-  
-        i_cortical_thickness_weight = cortical_thickness_weight(:,i);
+    for i = 1:maps
+        i_cortical_thickness_weight = cortical_thickness_weight(:, i);
         i_cortical_thickness_weight = invalidateNonSurfaceRegions(i_cortical_thickness_weight);
-        %global color min, max
-        cmin = min(cortical_thickness_weight(:));
-        cmax = max(cortical_thickness_weight(:));
-     
         
-         
+        % Global color min, max
+        cmin = min(i_cortical_thickness_weight(:));
+        cmax = max(i_cortical_thickness_weight(:));
+        if args.max ~= inf && args.min ~= -inf
+            cmin = args.min;
+            cmax = args.max;
+        end
+
+        range_thresh = 0.1;
         
-        [left_cdata, lh_vertex_id, right_cdata, rh_vertex_id,final_cdata,vertex_id]  = convertCorticalThickness2VertexData(path_annot_lh,path_annot_rh,i_cortical_thickness_weight);
+        if cmin >= 0 || (-cmin < range_thresh * cmax)
+            cmap = mycolormap_blue(cmin, cmax);
+        else
+            cmap = mycolormap(0, range_thresh, cmin, cmax);
+        end
+        
+        % Apply custom colormap if provided
+        if ~isempty(colormap_name)
+            if class(colormap_name) == "double" 
+            cmap = colormap_name;   
+            end
+        end
+        
+        [left_cdata, lh_vertex_id, right_cdata, rh_vertex_id, final_cdata, vertex_id] = convertCorticalThickness2VertexData(path_annot_lh, path_annot_rh, i_cortical_thickness_weight);
         data_label = "";
-        middleValue = (cmin+ cmax)/2;
-        % middleValue = 0;
-        range_thresh = 0.15;
-        cmap = mycolormap(middleValue,range_thresh,cmin,cmax);
-        
+        middleValue = (cmin + cmax) / 2;
+
         data_all.both = final_cdata;
         data_all.lh = left_cdata;
         data_all.rh = right_cdata;
         climits = [cmin, cmax];
-        MyExampleSurfacePlotFunction(surface_all,id_all,data_all,cmap,data_label,climits);
-        
-        colorbar('hide') 
-        saveas(gcf,sprintf("%s/%s_%i_2.svg",args.dir,args.name,i-1))    
 
+        MyExampleSurfacePlotFunction(surface_all, id_all, data_all, cmap, data_label, climits);
+        % Hide color bar
+        colorbar off;
+
+        % Save file into the specified directory
+        save_path = fullfile(args.dir, sprintf("%s_%i_2.svg", args.name, i - 1));
+        saveas(gcf, save_path);
     end
-MyExampleSurfacePlotFunction(surface_all,id_all,data_all,cmap,data_label,climits);
-colormap(cmap)
-saveas(gcf,sprintf("%s/%s_color_bar.svg",args.dir,args.name))
 
+    MyExampleSurfacePlotFunction(surface_all, id_all, data_all, cmap, data_label, climits);
+    save_path = fullfile(args.dir, sprintf("%s_color_bar.svg", args.name));
+    saveas(gcf, save_path);
+end

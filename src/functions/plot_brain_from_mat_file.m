@@ -87,7 +87,11 @@ function plot_brain_from_mat_file(varargin)
 
         % colorbar('hide') 
         % exportgraphics(gcf,sprintf("%s/%s_%i_2.svg",args.dir,args.name,i-1), 'ContentType', 'vector');
-        saveas(gcf,sprintf("%s/%s_%i_2.svg",args.dir,args.name,i-1))  
+        saveas(gcf,sprintf("%s/%s_%i_2.svg",args.dir,args.name,i-1))
+        
+        % colorbar('hide') 
+        saveas(gcf,sprintf("%s/%s_%i_%g_%g.svg",args.dir,args.name,i-1,cmin, cmax))
+        
         saveas(gcf,sprintf("%s/%s_%i_2.png",args.dir,args.name,i-1))  
 
     end
