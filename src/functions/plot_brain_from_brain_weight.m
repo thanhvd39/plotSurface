@@ -9,7 +9,7 @@ function plot_brain_from_brain_weight(varargin)
     addParameter(parser, 'max', inf, @isnumeric);
     addParameter(parser, 'min',-inf,@isnumeric);
     
-    run('init.m')
+    % run('init.m')
     path_annot_lh = 'lh.Schaefer2018_200Parcels_7Networks_order.annot';
     path_annot_rh = 'rh.Schaefer2018_200Parcels_7Networks_order.annot';
     load('mySurface_data.mat')
@@ -69,16 +69,53 @@ function plot_brain_from_brain_weight(varargin)
         data_all.rh = right_cdata;
         climits = [cmin, cmax];
 
+        lh_lateral(surface_all,id_all,data_all,cmap,data_label,climits)
+        save_path = fullfile(args.dir, sprintf("lh_lateral_%s_%i.svg", args.name, i - 1));
+        saveas(gcf, save_path);
+        save_path = fullfile(args.dir, sprintf("lh_lateral_%s_%i.png", args.name, i - 1));
+        saveas(gcf, save_path);
+
+        lh_medial(surface_all,id_all,data_all,cmap,data_label,climits)
+        save_path = fullfile(args.dir, sprintf("lh_medial_%s_%i.svg", args.name, i - 1));
+        saveas(gcf, save_path);
+        save_path = fullfile(args.dir, sprintf("lh_medial_%s_%i.png", args.name, i - 1));
+        saveas(gcf, save_path);
+
+        rh_lateral(surface_all,id_all,data_all,cmap,data_label,climits)
+        save_path = fullfile(args.dir, sprintf("rh_lateral_%s_%i.svg", args.name, i - 1));
+        saveas(gcf, save_path);
+        save_path = fullfile(args.dir, sprintf("rh_lateral_%s_%i.png", args.name, i - 1));
+        saveas(gcf, save_path);
+
+        rh_medial(surface_all,id_all,data_all,cmap,data_label,climits)
+        save_path = fullfile(args.dir, sprintf("rh_medial_%s_%i.svg", args.name, i - 1));
+        saveas(gcf, save_path);
+        save_path = fullfile(args.dir, sprintf("rh_medial_%s_%i.png", args.name, i - 1));
+        saveas(gcf, save_path);
+
+
+        both_hemisphere_dorsal(surface_all,id_all,data_all,cmap,data_label,climits)
+        save_path = fullfile(args.dir, sprintf("both_hemis_%s_%i.svg", args.name, i - 1));
+        saveas(gcf, save_path);
+        save_path = fullfile(args.dir, sprintf("both_hemis_%s_%i.png", args.name, i - 1));
+        saveas(gcf, save_path);
+
         MyExampleSurfacePlotFunction(surface_all, id_all, data_all, cmap, data_label, climits);
+        
         % Hide color bar
         colorbar off;
 
         % Save file into the specified directory
-        save_path = fullfile(args.dir, sprintf("%s_%i_2.svg", args.name, i - 1));
+        save_path = fullfile(args.dir, sprintf("%s_%i.svg", args.name, i - 1));
+        saveas(gcf, save_path);
+
+        save_path = fullfile(args.dir, sprintf("%s_%i.png", args.name, i - 1));
         saveas(gcf, save_path);
     end
 
     MyExampleSurfacePlotFunction(surface_all, id_all, data_all, cmap, data_label, climits);
     save_path = fullfile(args.dir, sprintf("%s_color_bar.svg", args.name));
+    saveas(gcf, save_path);
+    save_path = fullfile(args.dir, sprintf("%s_color_bar.png", args.name));
     saveas(gcf, save_path);
 end
