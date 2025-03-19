@@ -8,6 +8,7 @@ function plot_brain_from_brain_weight(varargin)
     addParameter(parser, 'colormap', @ischar); % Add colormap parameter
     addParameter(parser, 'max', inf, @isnumeric);
     addParameter(parser, 'min',-inf,@isnumeric);
+    addParameter(parser, 'plot_full',false, @islogical);
     
     % run('init.m')
     path_annot_lh = 'lh.Schaefer2018_200Parcels_7Networks_order.annot';
@@ -69,37 +70,38 @@ function plot_brain_from_brain_weight(varargin)
         data_all.rh = right_cdata;
         climits = [cmin, cmax];
 
-        lh_lateral(surface_all,id_all,data_all,cmap,data_label,climits)
-        save_path = fullfile(args.dir, sprintf("lh_lateral_%s_%i.svg", args.name, i - 1));
-        saveas(gcf, save_path);
-        save_path = fullfile(args.dir, sprintf("lh_lateral_%s_%i.png", args.name, i - 1));
-        saveas(gcf, save_path);
+        if args.plot_full
+            lh_lateral(surface_all,id_all,data_all,cmap,data_label,climits)
+            save_path = fullfile(args.dir, sprintf("lh_lateral_%s_%i.svg", args.name, i - 1));
+            saveas(gcf, save_path);
+            save_path = fullfile(args.dir, sprintf("lh_lateral_%s_%i.png", args.name, i - 1));
+            saveas(gcf, save_path);
 
-        lh_medial(surface_all,id_all,data_all,cmap,data_label,climits)
-        save_path = fullfile(args.dir, sprintf("lh_medial_%s_%i.svg", args.name, i - 1));
-        saveas(gcf, save_path);
-        save_path = fullfile(args.dir, sprintf("lh_medial_%s_%i.png", args.name, i - 1));
-        saveas(gcf, save_path);
+            lh_medial(surface_all,id_all,data_all,cmap,data_label,climits)
+            save_path = fullfile(args.dir, sprintf("lh_medial_%s_%i.svg", args.name, i - 1));
+            saveas(gcf, save_path);
+            save_path = fullfile(args.dir, sprintf("lh_medial_%s_%i.png", args.name, i - 1));
+            saveas(gcf, save_path);
 
-        rh_lateral(surface_all,id_all,data_all,cmap,data_label,climits)
-        save_path = fullfile(args.dir, sprintf("rh_lateral_%s_%i.svg", args.name, i - 1));
-        saveas(gcf, save_path);
-        save_path = fullfile(args.dir, sprintf("rh_lateral_%s_%i.png", args.name, i - 1));
-        saveas(gcf, save_path);
+            rh_lateral(surface_all,id_all,data_all,cmap,data_label,climits)
+            save_path = fullfile(args.dir, sprintf("rh_lateral_%s_%i.svg", args.name, i - 1));
+            saveas(gcf, save_path);
+            save_path = fullfile(args.dir, sprintf("rh_lateral_%s_%i.png", args.name, i - 1));
+            saveas(gcf, save_path);
 
-        rh_medial(surface_all,id_all,data_all,cmap,data_label,climits)
-        save_path = fullfile(args.dir, sprintf("rh_medial_%s_%i.svg", args.name, i - 1));
-        saveas(gcf, save_path);
-        save_path = fullfile(args.dir, sprintf("rh_medial_%s_%i.png", args.name, i - 1));
-        saveas(gcf, save_path);
+            rh_medial(surface_all,id_all,data_all,cmap,data_label,climits)
+            save_path = fullfile(args.dir, sprintf("rh_medial_%s_%i.svg", args.name, i - 1));
+            saveas(gcf, save_path);
+            save_path = fullfile(args.dir, sprintf("rh_medial_%s_%i.png", args.name, i - 1));
+            saveas(gcf, save_path);
 
 
-        both_hemisphere_dorsal(surface_all,id_all,data_all,cmap,data_label,climits)
-        save_path = fullfile(args.dir, sprintf("both_hemis_%s_%i.svg", args.name, i - 1));
-        saveas(gcf, save_path);
-        save_path = fullfile(args.dir, sprintf("both_hemis_%s_%i.png", args.name, i - 1));
-        saveas(gcf, save_path);
-
+            both_hemisphere_dorsal(surface_all,id_all,data_all,cmap,data_label,climits)
+            save_path = fullfile(args.dir, sprintf("both_hemis_%s_%i.svg", args.name, i - 1));
+            saveas(gcf, save_path);
+            save_path = fullfile(args.dir, sprintf("both_hemis_%s_%i.png", args.name, i - 1));
+            saveas(gcf, save_path);
+        end
         MyExampleSurfacePlotFunction(surface_all, id_all, data_all, cmap, data_label, climits);
         
         % Hide color bar
