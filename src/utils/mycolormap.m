@@ -1,10 +1,9 @@
 function cmap = mycolormap(middleValue,range_thresh,cmin,cmax)
 % author: thanhvd18 
-% middleValue: middle value - where no color
-% range_thresh: from middleValue 0.1 => 10% from middle value 
+
 
 n = 256;                %// resolution
-middle_index = dsearchn(linspace(cmin,cmax,n)',middleValue);
+middle_index = dsearchn(linspace(cmin,cmax,n)',middleValue)
 cmap(1,:) = [220,0,0]/255; %red
 cmap(3,:) = [245,245,245]/255;   %gray
 cmap(2,:) = [247,247,247]/255;   %gray
