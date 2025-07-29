@@ -15,14 +15,15 @@
 ## Requirements
 - Brain annotation file compatible with the Schaefer 200 region atlas or another atlas.
 
-## Usage
+## 🎯 **Quick Start**
 
-1. Prepare a brain weight input file:
-   - Supported formats: `.mat` file or `.csv` file.
-   - Ensure the file contains a 200-element vector of weights corresponding to the regions in the Schaefer atlas.
+**Launch the system:**
+   ```matlab
+   launch_brain_gui()
+   ```
 
-2. Run script main.m[README.md](README.md)
+
 
 
 ## Acknowledgements
-Thanks to project [plotSurfaceROIBoundary](https://github.com/StuartJO/plotSurfaceROIBoundary)**
+Thanks to project [plotSurfaceROIBoundary](https://github.com/StuartJO/plotSurfaceROIBoundary)
