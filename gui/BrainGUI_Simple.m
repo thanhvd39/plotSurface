@@ -37,7 +37,7 @@ function BrainGUI_Simple()
     
     function createSimpleGUI()
         % Create main figure
-        fig = figure('Name', 'Brain Surface Plot - Simple GUI', ...
+        fig = figure('Name', 'Brain Surface Plot', ...
                     'Position', [200, 200, 800, 600], ...
                     'MenuBar', 'none', ...
                     'ToolBar', 'none', ...
@@ -403,7 +403,7 @@ function BrainGUI_Simple()
             
             for i = 1:length(all_figs)
                 fig_name = get(all_figs(i), 'Name');
-                if ~contains(fig_name, 'Brain Surface Plot - Simple GUI')
+                if ~contains(fig_name, 'Brain Surface Plot')
                     plot_figs = [plot_figs; all_figs(i)];
                 end
             end
@@ -439,7 +439,7 @@ function BrainGUI_Simple()
         all_figs = findall(groot, 'Type', 'figure');
         for i = 1:length(all_figs)
             fig_name = get(all_figs(i), 'Name');
-            if ~contains(fig_name, 'Brain Surface Plot - Simple GUI')
+            if ~contains(fig_name, 'Brain Surface Plot')
                 close(all_figs(i));
             end
         end

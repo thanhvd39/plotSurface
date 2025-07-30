@@ -10,4 +10,8 @@ src/svg
 
 .idea
 dev
+test
+examples
 
+/tests
+/dev
