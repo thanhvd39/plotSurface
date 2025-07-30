@@ -34,7 +34,7 @@ Click the plot button to visualize your brain surface data
 **Example Usage**
 ```matlab
 % Load 200-region data and plot with Schaefer 200 atlas
-data = randn(200, 1);  % Your brain data
+data = randn(202, 1);  % Your brain data first and second indices are for medial wall in Schaefer atlas
 writematrix(data, 'my_data.csv');
 
 % Launch GUI
